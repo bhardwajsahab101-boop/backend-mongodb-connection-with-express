@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Chats - ChatApp</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
+</head>
+<body class="fade-in">
+    <%- include('../public/partials/navbar.ejs') %>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>All Chats! (<%= chats.length %>)</h1>
+            <p>View, edit, or delete your conversations below.</p>
+            <a href="/chats/new" class="btn btn-primary">+ New Chat</a>
+        </div>
+        
+        <div class="chat-container">
+            <% for (let chat of chats) { %>
+                <div class="chat fade-in">
+                    <h3>💬 Conversation</h3>
+                    <p><strong>From:</strong> <%= chat.from %></p>
+                    <div class="msg">
+                        <strong>Message:</strong> <%= chat.msg %>
+                    </div>
+                    <p><strong>To:</strong> <%= chat.to %></p>
+                    <div class="time-date">
+                        <span>🕒 <%= chat.createdAt.toLocaleTimeString() %></span> | 
+                        <span>📅 <%= chat.createdAt.toDateString() %></span>
+                    </div>
+                    
+                    <div class="chat-actions">
+                        <a href="/chat/<%= chat._id %>/edit" class="btn btn-secondary">Edit</a>
+                        <form action="/chat/<%= chat._id %>?_method=DELETE" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this chat?')">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <script>
+    // Smooth fade-in for chats
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.chat').forEach((el, i) => {
+            el.style.animationDelay = `${i * 0.1}s`;
+        });
+    });
+    </script>
+</body> 
+</html>

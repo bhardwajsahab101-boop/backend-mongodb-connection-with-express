@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - ChatApp</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>"
+    />
+  </head>
+  <body class="fade-in">
+    <%- include('../public/partials/navbar.ejs') %>
+
+    <div class="hero">
+      <h1>Welcome to ChatApp 💬</h1>
+      <p>
+        Beautiful, fast, and secure messaging for everyone. Start chatting now!
+      </p>
+      <div style="margin-top: 2rem">
+        <a href="/chats" class="btn btn-primary">View All Chats</a>
+        <a href="/chats/new" class="btn btn-secondary">+ New Chat</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 4rem;
+        "
+      >
+        <div class="chat" style="text-align: center">
+          <div style="font-size: 3rem; margin-bottom: 1rem">🚀</div>
+          <h3>Lightning Fast</h3>
+          <p>Instant messaging with smooth animations and real-time updates.</p>
+        </div>
+        <div class="chat" style="text-align: center">
+          <div style="font-size: 3rem; margin-bottom: 1rem">🔒</div>
+          <h3>Secure & Private</h3>
+          <p>
+            Your conversations are safe with modern encryption and privacy
+            controls.
+          </p>
+        </div>
+        <div class="chat" style="text-align: center">
+          <div style="font-size: 3rem; margin-bottom: 1rem">📱</div>
+          <h3>Mobile Ready</h3>
+          <p>Works perfectly on all devices - desktop to mobile.</p>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      style="
+        text-align: center;
+        padding: 3rem 2rem;
+        color: var(--text-light);
+        margin-top: 4rem;
+        border-top: 1px solid var(--border);
+      "
+    >
+      <p>&copy; 2024 ChatApp. Designed beautifully with modern UI. 💫</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">ChatApp 💬</div>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/chats">Chats</a>
+      <a href="/chats/new">New Chat</a>
+    </div>
+    <button
+      class="theme-toggle"
+      onclick="toggleTheme()"
+      aria-label="Toggle theme"
+    >
+      🌙
+    </button>
+  </div>
+</nav>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute("data-theme");
+    html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+  }
+</script>

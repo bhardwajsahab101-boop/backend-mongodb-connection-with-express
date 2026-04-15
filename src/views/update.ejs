@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Chat - ChatApp</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
+</head>
+<body class="fade-in">
+    <%- include('../public/partials/navbar.ejs') %>
+    
+    <div class="container">
+        <div class="new_form">
+            <% if (chat) { %>
+                <h2>✏️ Edit Chat #<%= chat._id %></h2>
+                <div class="msg" style="margin-bottom: 2rem;">
+                    <strong>From:</strong> <%= chat.from %> → <strong>To:</strong> <%= chat.to %>
+                </div>
+                
+                <form action="/chats/<%= chat._id %>?_method=PUT" method="post">
+                    <div class="form-group">
+                        <label for="msg">Update Message:</label>
+                        <textarea id="msg" name="msg" required rows="8"><%= chat.msg %></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <a href="/chats" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Update Message ✅</button>
+                    </div>
+                </form>
+            <% } else { %>
+                <div style="text-align: center; padding: 4rem;">
+                    <h2>❌ Chat Not Found</h2>
+                    <p>The chat you're looking for doesn't exist.</p>
+                    <a href="/chats" class="btn btn-primary">Back to Chats</a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
